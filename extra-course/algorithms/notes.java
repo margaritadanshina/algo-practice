@@ -11,7 +11,11 @@ public static int gcd(int p, int q) {
     return gcd(q, r);
 }
 
+//Dynamic connectivity 
+
 // union command - connect two objects
+//is there a path that connects them?
+
 //quick find
     //is too slow
     //is too expensive. It take N squared array accesses to process a sequence of N union commans on N objects. 
@@ -79,7 +83,7 @@ public class QuickUnionUF
     {
         return root(p) == root(q);
     }
-
+    ///add connection between p and q
     public void union(int p, int q)
     //change root of p to point to root of q (depth of p and q array accesses)
     {
@@ -88,4 +92,54 @@ public class QuickUnionUF
         id[i] = j;
     }
 }
+
+//Improvement:
+    //weighting
+        //quick-union
+            //modify quick-union to avoid tall trees
+            //kepp track of size of each tree (number of obj)
+            //balance by linking root of smaller tree to root of larger tree
+
+            //Running time: find - takes time proportional to depth of p and q.
+                            //union - takes constant time, given roots
+
+
+    //path compression
+        //just after computing the root of p, set the id of each examined node to point to that root. 
+        private int root(int i)
+        {
+            while (i != id[i])
+            {
+                id[i] = id[id[i]];
+                i = id[i];
+            }
+            return i;
+        } 
+
+        //keeps tree almost completely flat
+
+
+    //Time complexity
+    // quick-find     M N
+    // quick-union    M N
+    // weighted QU    N + M log N
+    // QU + path compression N + M log N
+    // weighted QU + path compression N + M lg* N
+
+
+    //unon-find appliction:
+
+    //percolation
+    //least common ancestor
+
+
+
+    // Q1 Social network connectivity
+    
+    //Given a social network containing n members and a log file containing m timestamps
+    //at which times pairs of members formed friendships, design an algorithm to determine the
+    //earliest time at which all members are connected (i.e. every member is a friend of a friend of a 
+    //friend ... of a friend).
+    //Assume that the log file is sorted by timestamp and that friendship is an equivalence relation.
+    //The running time of your algo should be m log n or better and use extra space proportional to n. 
 
