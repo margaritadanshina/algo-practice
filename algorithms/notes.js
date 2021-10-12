@@ -9,3 +9,4 @@ function euc(a, b) {
 }
 
 console.log(euc(462, 910))
+
