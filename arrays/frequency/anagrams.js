@@ -32,3 +32,41 @@ function validAnagram(str1, str2) {
 
 console.log(validAnagram('cinema', 'iceman'));
 console.log(validAnagram('cinem', 'iceman'));
+
+
+// write a function called sameFrequency. Given two positive integers, find out if the two
+//numbers have the same frequency 
+function sameFrequency(num1, num2){
+    let numStr1 = num1.toString();
+    let numStr2 = num2.toString();
+    let compare = {};
+  // good luck. Add any arguments you deem necessary.
+  if(numStr1.length !== numStr2.length) {
+      return false;
+  }
+  for(let i = 0; i < numStr1.length; i++) {
+      let check = numStr1[i];
+      if(compare[check]) {
+          compare[check] += 1;
+      } else {
+          compare[check] = 1;
+      }
+  }
+  for(let j = 0; j < numStr2.length; j++) {
+      let check = numStr2[j];
+      if(!compare[check]) {
+          return false;
+      } else {
+          compare[check] -= 1;
+      }
+  }
+  return true;
+}
+
+
+
+console.log(sameFrequency(182, 281));
+console.log(sameFrequency(34, 14));
+console.log(sameFrequency(3589578, 5879385));
+console.log(sameFrequency(22, 222));
+
