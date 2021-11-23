@@ -5,30 +5,38 @@
 //     else return fib(n - 1) + fib(n - 2);
 // }
 
-//time O(2N) space O(n)
-//let fibMemo = (function () {
+//time O(n) space O(n)
+
     //memo - is an obj to remember the results of previous operations
-    let memo = {};
-    let fib = function(n) {
-        if(n === 0 || n === 1) {
-            return n;
-        } else if (memo[n]) {
-            return memo[n];
-        } else {
-            let result = fib(n - 1) + fib(n - 2);
-            memo[n] = result;
-            return result;
-        }
-        // let result = memo[n];
-        // if(typeof result !== 'number') {
-        //     result = fib(n - 1) + fib(n - 2);
-        //     memo[n] = result;
-        // }
-        // return result;
+    // function fib (n, memo = {1: 0, 2: 1}) {
+    //     if(n in memo) {
+    //         return memo[n];
+    //     } else {
+    //         memo[n] = fib(n - 1, memo) + fib(n - 2, memo);
+    //         return memo[n]
+    //     } 
+    // }
+
+//the most optimal solution
+//time O(n) space O(1)
+
+function nthFib(n) {
+    const lastTwo = [0, 1];
+    let counter = 3;
+    while(counter <= n) {
+        const nextFib = lastTwo[0] + lastTwo[1];
+        lastTwo[0] = lastTwo[1];
+        lastTwo[1] = nextFib;
+        counter++;    
     }
-    //return fib;
-//} () )
+    if(n > 1) {
+        return lastTwo[1]
+    } else {
+        return lastTwo[0]
+    }
+    //return n > 1 ? lastTwo[1] : lastTwo[0];
+}
 
-
-console.log(fibMemo([0, 1]))
+//console.log(fib(0))
 //[0, 1, 1, 2, 3, 5, 8, 13, 21]
+console.log(nthFib(2))
