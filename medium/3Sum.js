@@ -1,6 +1,6 @@
 //given an integer array, return all triplets [array[i], array[j], array[k]] such that i != j, i != k, and j != k, and array[i] + array[j] + array[k] == 0
 
-
+//O(2^n) O(n)
 function threeSum(array) {
     let newArr = [];
     //sort the array
