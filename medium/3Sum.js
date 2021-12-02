@@ -8,9 +8,7 @@ function threeSum(array) {
 
     //loop through the elements
     for(let i = 0; i < array.length; i++) {
-        if(i !== 0 && array[i - 1] === array[i]) {
-            continue;
-        }
+        let element = array[i];
         //[-1, 0, 1, 2, -1, -4]
         //  i
         //    left
@@ -18,14 +16,15 @@ function threeSum(array) {
         let left = i + 1;
         let right = array.length - 1;
         while(left < right) {
-            let sum = array[i] + array[left] + array[right];
+            let sum = element + array[left] + array[right];
+            
             if(sum === 0) {
-                newArr.push([array[i], array[left], array[right]]);
+                newArr.push([element, array[left], array[right]]);
                 left++;
                 right--;
-                while(left < right && array[left - 1] === array[left]) {
-                    left++;
-                }
+                // while(left < right && array[left - 1] === array[left]) {
+                //     left++;
+                // }
             } else if(sum < 0) {
                 left++;
             } else {
