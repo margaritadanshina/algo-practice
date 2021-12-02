@@ -30,3 +30,23 @@ console.log(isPalindromeRecursive('foobar'))
 // console.log(isPalindrome(123))
 // console.log(isPalindrome(454))
 
+
+// Valid Palindrome
+//a phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanaumeric characters include letters and numbers.
+
+function validPalindrome(s){
+    s = s.replace(/[^A-Za-z0-9]/g, "").toLowerCase();
+    let left = 0;
+    let right = s.length -1;
+    while(left < right) {
+        if(s[left] !== s[right]) {
+            return false;
+        }
+        left++;
+        right--;
+    }
+    return true;
+}
+
+console.log(validPalindrome("A man, a plan, a canal: Panama")) //true
+console.log(validPalindrome("race a car")) //false
