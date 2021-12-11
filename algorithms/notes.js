@@ -43,7 +43,7 @@ Memo can result in much faster overall execution times (although it can increase
 //set()
 //values()
 
-class Hagmap {
+class Hashmap {
     constructor() {
         this.storage = [];
     }
